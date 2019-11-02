@@ -16,12 +16,14 @@ function init(){
 
 function idz(){
     // console.log('dzialam');
+    document.getElementById(polozenie).classList.remove("waz");
     polozenie++;
     document.getElementById(polozenie).classList.add("waz");
     setTimeout("idz()",1000);
 }
 function start(){
     // console.log('dzialam');
+    document.getElementById('start').innerHTML = 'Pauza';
     document.getElementById(polozenie).classList.add("waz");
     setTimeout("idz()",1000);
 }
