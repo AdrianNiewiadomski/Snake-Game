@@ -1,12 +1,27 @@
+var kierunek = 'p';
+var polozenie = 42;
+
 function init(){
     var kod = "";
     var nr = 0;
     for(var i=0; i<10; i++){
         for(var j=0; j<10; j++){
             nr = 10*i + j +1;
-            kod += '<div class="pole">'+nr+'</div>'
+            kod += '<div id="'+nr+'" class="pole">'+nr+'</div>'
         }
         kod +='<div class="clear"></div>';
     }
     document.getElementById('plansza').innerHTML = kod;
+}
+
+function idz(){
+    // console.log('dzialam');
+    polozenie++;
+    document.getElementById(polozenie).classList.add("waz");
+    setTimeout("idz()",1000);
+}
+function start(){
+    // console.log('dzialam');
+    document.getElementById(polozenie).classList.add("waz");
+    setTimeout("idz()",1000);
 }

@@ -33,7 +33,7 @@ header div:last-child:after{
     clear: both;
 }
 header div button{
-    width: 100px;
+    width: 50%;
 }
 #plansza{
     height: 80%;
@@ -49,4 +49,7 @@ header div button{
 }
 .clear{
     clear: both;
+}
+.waz{
+    background-color: #27ae60;
 }
