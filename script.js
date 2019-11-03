@@ -38,3 +38,19 @@ function start(){
 
     }
 }
+
+function zmienKierunek(event) {
+    // alert("zmienKierunek - dzialam");
+    //console.log(event);
+    var key = event.which || event.keyCode;
+    if(key==38){
+        kierunek = 'g';
+    } else if (key==39) {
+        kierunek = 'p';
+    } else if (key==40) {
+        kierunek = 'd';
+    } else if (key==37) {
+        kierunek = 'l';
+    }
+    console.log(kierunek);
+}
