@@ -1,5 +1,7 @@
+var graWToku = false;
 var kierunek = 'p';
 var polozenie = 42;
+var timer = 0;
 
 function init(){
     var kod = "";
@@ -19,11 +21,20 @@ function idz(){
     document.getElementById(polozenie).classList.remove("waz");
     polozenie++;
     document.getElementById(polozenie).classList.add("waz");
-    setTimeout("idz()",1000);
+    // setTimeout("idz()",1000);
+    timer = setTimeout("idz()",1000);
 }
 function start(){
     // console.log('dzialam');
-    document.getElementById('start').innerHTML = 'Pauza';
-    document.getElementById(polozenie).classList.add("waz");
-    setTimeout("idz()",1000);
+    graWToku = !graWToku;
+    if(graWToku){
+        document.getElementById('start').innerHTML = 'Pauza';
+        document.getElementById(polozenie).classList.add("waz");
+        // setTimeout("idz()",1000);
+        timer = setTimeout("idz()",1000);
+    } else {
+        clearTimeout(timer);
+        document.getElementById('start').innerHTML = 'Start';
+
+    }
 }
