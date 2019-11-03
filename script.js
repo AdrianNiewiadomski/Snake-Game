@@ -19,7 +19,17 @@ function init(){
 function idz(){
     // console.log('dzialam');
     document.getElementById(polozenie).classList.remove("waz");
-    polozenie++;
+    // polozenie++;
+    if(kierunek=='p'){
+        polozenie++;
+    } else if (kierunek=='l') {
+        polozenie--;
+    } else if (kierunek=='g') {
+        polozenie -= 10;
+    } else if (kierunek=='d') {
+        polozenie += 10;
+    }
+
     document.getElementById(polozenie).classList.add("waz");
     // setTimeout("idz()",1000);
     timer = setTimeout("idz()",1000);
