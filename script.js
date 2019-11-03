@@ -16,24 +16,53 @@ function init(){
     document.getElementById('plansza').innerHTML = kod;
 }
 
-function idz(){
-    // console.log('dzialam');
-    document.getElementById(polozenie).classList.remove("waz");
-    // polozenie++;
-    if(kierunek=='p'){
-        polozenie++;
-    } else if (kierunek=='l') {
-        polozenie--;
-    } else if (kierunek=='g') {
-        polozenie -= 10;
-    } else if (kierunek=='d') {
-        polozenie += 10;
+function sprawdzPozycje(){
+    var koniecGry = false;
+    if(polozenie%10 == 0 && kierunek=='p'){
+        koniecGry = true;
+    } else if(polozenie%10 == 1 && kierunek=='l'){
+        koniecGry = true;
+    } else if(polozenie<=10 && kierunek=='g'){
+        koniecGry = true;
+    } else if(polozenie>90 && kierunek=='d'){
+        koniecGry = true;
     }
 
-    document.getElementById(polozenie).classList.add("waz");
-    // setTimeout("idz()",1000);
-    timer = setTimeout("idz()",1000);
+    if(koniecGry){
+        clearTimeout(timer);
+        alert("Koniec gry!");
+
+        document.getElementById(polozenie).classList.remove("waz");
+        graWToku = false;
+        kierunek = 'p';
+        polozenie = 42;
+        document.getElementById(polozenie).classList.add("waz");
+        document.getElementById('start').innerHTML = 'Start';
+    }
+    return koniecGry;
 }
+
+function idz(){
+    if(!sprawdzPozycje()){
+        // console.log('dzialam');
+        document.getElementById(polozenie).classList.remove("waz");
+        // polozenie++;
+        if(kierunek=='p'){
+            polozenie++;
+        } else if (kierunek=='l') {
+            polozenie--;
+        } else if (kierunek=='g') {
+            polozenie -= 10;
+        } else if (kierunek=='d') {
+            polozenie += 10;
+        }
+
+        document.getElementById(polozenie).classList.add("waz");
+        // setTimeout("idz()",1000);
+        timer = setTimeout("idz()",1000);
+    }
+}
+
 function start(){
     // console.log('dzialam');
     graWToku = !graWToku;
