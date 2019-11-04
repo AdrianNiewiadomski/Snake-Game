@@ -3,6 +3,7 @@ var kierunek = 'p';
 var polozenie = 42;
 var polozenieOwocu = 0;
 var timer = 0;
+var punkty = 0;
 
 function init(){
     var kod = "";
@@ -46,6 +47,14 @@ function sprawdzPozycje(){
         polozenie = 42;
         document.getElementById(polozenie).classList.add("waz");
         document.getElementById('start').innerHTML = 'Start';
+
+    } else if (polozenie == polozenieOwocu) {
+
+        document.getElementById(polozenieOwocu).classList.remove("owoc");
+        punkty++;
+        document.getElementById('wynik').innerHTML = 'Wynik: '+ punkty;
+        dodajOwoc();
+        
     }
     return koniecGry;
 }
