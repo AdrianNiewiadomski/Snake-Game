@@ -1,6 +1,7 @@
 var graWToku = false;
 var kierunek = 'p';
 var polozenie = 42;
+var polozenieOwocu = 0;
 var timer = 0;
 
 function init(){
@@ -14,6 +15,11 @@ function init(){
         kod +='<div class="clear"></div>';
     }
     document.getElementById('plansza').innerHTML = kod;
+}
+
+function dodajOwoc(){
+    polozenieOwocu = Math.floor(Math.random()*100)+1;
+    document.getElementById(polozenieOwocu).classList.add("owoc");
 }
 
 function sprawdzPozycje(){
@@ -67,6 +73,7 @@ function start(){
     // console.log('dzialam');
     graWToku = !graWToku;
     if(graWToku){
+        dodajOwoc();
         document.getElementById('start').innerHTML = 'Pauza';
         document.getElementById(polozenie).classList.add("waz");
         // setTimeout("idz()",1000);
