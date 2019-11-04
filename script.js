@@ -39,6 +39,8 @@ function sprawdzPozycje(){
         alert("Koniec gry!");
 
         document.getElementById(polozenie).classList.remove("waz");
+        document.getElementById(polozenieOwocu).classList.remove("owoc");
+        polozenieOwocu = 0;
         graWToku = false;
         kierunek = 'p';
         polozenie = 42;
@@ -73,7 +75,11 @@ function start(){
     // console.log('dzialam');
     graWToku = !graWToku;
     if(graWToku){
-        dodajOwoc();
+
+        if(polozenieOwocu == 0){
+            dodajOwoc();
+        }
+
         document.getElementById('start').innerHTML = 'Pauza';
         document.getElementById(polozenie).classList.add("waz");
         // setTimeout("idz()",1000);
