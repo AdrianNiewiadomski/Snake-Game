@@ -22,8 +22,11 @@ header{
     height: 20%;
 }
 header div{
-    width: 50%;
+    width: 25%;
     float: left;
+}
+header div.srodek{
+    width: 50%;
 }
 #wynik{
     /* padding-left: 25%; */
@@ -33,9 +36,9 @@ header div{
     content: "";
     clear: both;
 }
-header div button{
+/* header div button{
     width: 50%;
-}
+} */
 #plansza{
     height: 80%;
     padding-bottom: 10%;

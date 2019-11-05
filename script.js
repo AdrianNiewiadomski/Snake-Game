@@ -7,6 +7,7 @@ polozenie[2] = 42;
 var polozenieOwocu = 0;
 var timer = 0;
 var punkty = 0;
+var trudnosc = 1;
 
 function init(){
     var kod = "";
@@ -24,6 +25,17 @@ function init(){
 function dodajOwoc(){
     polozenieOwocu = Math.floor(Math.random()*100)+1;
     document.getElementById(polozenieOwocu).classList.add("owoc");
+}
+
+function zmienTrudnosc(){
+    var trud = document.getElementById('trudnosc').value;
+    if(trud=='latwy'){
+        trudnosc = 1;
+    } else if (trud=='sredni') {
+        trudnosc = 2;
+    } else {
+        trudnosc = 3;
+    }
 }
 
 function sprawdzPozycje(){
@@ -91,7 +103,7 @@ function idz(){
 
         document.getElementById(polozenie[0]).classList.add("waz");
         // setTimeout("idz()",1000);
-        timer = setTimeout("idz()",1000);
+        timer = setTimeout("idz()",1000/trudnosc);
     }
 }
 
@@ -110,7 +122,7 @@ function start(){
             document.getElementById(polozenie[i]).classList.add("waz");
         }
         // setTimeout("idz()",1000);
-        timer = setTimeout("idz()",1000);
+        timer = setTimeout("idz()",1000/trudnosc);
     } else {
         clearTimeout(timer);
         document.getElementById('start').innerHTML = 'Start';
