@@ -81,13 +81,15 @@ function sprawdzPozycje(){
         nastepnaPozycja = polozenie[0]-1;
     } else if(kierunek=='g'){
         nastepnaPozycja = polozenie[0]-10;
-    } else {        
+    } else {
         nastepnaPozycja = polozenie[0]+10;
     }
     // if (polozenie[0] == polozenieOwocu) {
     if (nastepnaPozycja == polozenieOwocu) {
 
+        polozenie.unshift(polozenieOwocu);
         document.getElementById(polozenieOwocu).classList.remove("owoc");
+        document.getElementById(polozenieOwocu).classList.add("waz");
         punkty++;
         document.getElementById('wynik').innerHTML = 'Wynik: '+ punkty;
         dodajOwoc();
