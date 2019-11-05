@@ -40,6 +40,7 @@ function zmienTrudnosc(){
 
 function sprawdzPozycje(){
     var koniecGry = false;
+
     if(polozenie[0]%10 == 0 && kierunek=='p'){
         koniecGry = true;
     } else if(polozenie[0]%10 == 1 && kierunek=='l'){
@@ -70,8 +71,21 @@ function sprawdzPozycje(){
             document.getElementById(polozenie[i]).classList.add("waz");
         }
         document.getElementById('start').innerHTML = 'Start';
+        return koniecGry;
+    }
 
-    } else if (polozenie[0] == polozenieOwocu) {
+    var nastepnaPozycja;
+    if(kierunek=='p'){
+        nastepnaPozycja = polozenie[0]+1;
+    } else if(kierunek=='l'){
+        nastepnaPozycja = polozenie[0]-1;
+    } else if(kierunek=='g'){
+        nastepnaPozycja = polozenie[0]-10;
+    } else {        
+        nastepnaPozycja = polozenie[0]+10;
+    }
+    // if (polozenie[0] == polozenieOwocu) {
+    if (nastepnaPozycja == polozenieOwocu) {
 
         document.getElementById(polozenieOwocu).classList.remove("owoc");
         punkty++;
