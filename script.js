@@ -45,9 +45,10 @@ function koniecGry(){
     clearTimeout(timer);
     alert("Koniec gry!");
 
-    for (var i=0; i<polozenie.length; i++){
+    for (var i=1; i<polozenie.length; i++){
         document.getElementById(polozenie[i]).classList.remove("waz");
     }
+    document.getElementById(polozenie[0]).classList.remove("glowa");
 
     document.getElementById(polozenieOwocu).classList.remove("owoc");
     polozenieOwocu = 0;
@@ -57,9 +58,10 @@ function koniecGry(){
     polozenie[0] = 44;
     polozenie[1] = 43;
     polozenie[2] = 42;
-    for (var i=0; i<polozenie.length; i++){
+    for (var i=1; i<polozenie.length; i++){
         document.getElementById(polozenie[i]).classList.add("waz");
     }
+    document.getElementById(polozenie[0]).classList.add("glowa");
     document.getElementById('start').innerHTML = 'Start';
 }
 
@@ -167,13 +169,13 @@ function zmienKierunek(event) {
     // alert("zmienKierunek - dzialam");
     //console.log(event);
     var key = event.which || event.keyCode;
-    if(key==38){
+    if(key==38 && kierunek!='d'){
         kierunek = 'g';
-    } else if (key==39) {
+    } else if (key==39 && kierunek!='l') {
         kierunek = 'p';
-    } else if (key==40) {
+    } else if (key==40 && kierunek!='g') {
         kierunek = 'd';
-    } else if (key==37) {
+    } else if (key==37 && kierunek!='p') {
         kierunek = 'l';
     }
     console.log(kierunek);
