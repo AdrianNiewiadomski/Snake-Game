@@ -41,45 +41,47 @@ function zmienTrudnosc(){
     }
 }
 
+function koniecGry(){
+    clearTimeout(timer);
+    alert("Koniec gry!");
+
+    for (var i=0; i<polozenie.length; i++){
+        document.getElementById(polozenie[i]).classList.remove("waz");
+    }
+
+    document.getElementById(polozenieOwocu).classList.remove("owoc");
+    polozenieOwocu = 0;
+    graWToku = false;
+    kierunek = 'p';
+    polozenie = [];
+    polozenie[0] = 44;
+    polozenie[1] = 43;
+    polozenie[2] = 42;
+    for (var i=0; i<polozenie.length; i++){
+        document.getElementById(polozenie[i]).classList.add("waz");
+    }
+    document.getElementById('start').innerHTML = 'Start';
+}
+
 function sprawdzPozycje(){
 
-    var koniecGry = false;
+    var koniec = false;
 
     if(polozenie[0]%10 == 0 && kierunek=='p'){
-        koniecGry = true;
+        koniec = true;
     } else if(polozenie[0]%10 == 1 && kierunek=='l'){
-        koniecGry = true;
+        koniec = true;
     } else if(polozenie[0]<=10 && kierunek=='g'){
-        koniecGry = true;
+        koniec = true;
     } else if(polozenie[0]>90 && kierunek=='d'){
-        koniecGry = true;
+        koniec = true;
     }
 
-    if(koniecGry){
-        clearTimeout(timer);
-        alert("Koniec gry!");
-
-        for (var i=0; i<polozenie.length; i++){
-            document.getElementById(polozenie[i]).classList.remove("waz");
-        }
-
-        document.getElementById(polozenieOwocu).classList.remove("owoc");
-        polozenieOwocu = 0;
-        graWToku = false;
-        kierunek = 'p';
-        polozenie = [];
-        polozenie[0] = 44;
-        polozenie[1] = 43;
-        polozenie[2] = 42;
-        for (var i=0; i<polozenie.length; i++){
-            document.getElementById(polozenie[i]).classList.add("waz");
-        }
-        document.getElementById('start').innerHTML = 'Start';
-        return koniecGry;
+    if(koniec){
+        koniecGry();
+        return koniec;
     }
-
-
-    return koniecGry;
+    return koniec;
 }
 
 function idz(){
@@ -109,6 +111,8 @@ function idz(){
             dodajOwoc();
             timer = setTimeout("idz()",1000/trudnosc);
 
+        } else if (polozenie.includes(nastepnaPozycja)) {
+            koniecGry();
         } else {
             document.getElementById(polozenie[polozenie.length-1]).classList.remove("waz");
             for (var i=polozenie.length-1; i>0; i--){
