@@ -15,7 +15,7 @@ function init(){
     for(var i=0; i<10; i++){
         for(var j=0; j<10; j++){
             nr = 10*i + j +1;
-            kod += '<div id="'+nr+'" class="pole">'+nr+'</div>'
+            kod += '<div id="'+nr+'" class="pole"></div>'
         }
         kod +='<div class="clear"></div>';
     }
@@ -63,6 +63,8 @@ function koniecGry(){
     }
     document.getElementById(polozenie[0]).classList.add("glowa");
     document.getElementById('start').innerHTML = 'Start';
+    punkty = 0;
+    document.getElementById('wynik').innerHTML = 'Wynik: 00';
 }
 
 function sprawdzPozycje(){
@@ -111,6 +113,9 @@ function idz(){
             document.getElementById(polozenie[1]).classList.remove("glowa");
             //document.getElementById(polozenie[polozenie.length-1]).classList.add("waz");
             punkty++;
+            if(punkty<10){
+                punkty = '0'+punkty;
+            }
             document.getElementById('wynik').innerHTML = 'Wynik: '+ punkty;
             dodajOwoc();
             timer = setTimeout("idz()",1000/trudnosc);
