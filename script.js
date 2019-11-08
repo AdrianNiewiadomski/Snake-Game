@@ -104,7 +104,9 @@ function idz(){
             // console.log("nastepnaPozycja == polozenieOwocu");
             polozenie.unshift(polozenieOwocu);
             document.getElementById(polozenieOwocu).classList.remove("owoc");
-            document.getElementById(polozenieOwocu).classList.add("waz");
+            document.getElementById(polozenieOwocu).classList.add("glowa");
+            document.getElementById(polozenie[1]).classList.add("waz");
+            document.getElementById(polozenie[1]).classList.remove("glowa");
             //document.getElementById(polozenie[polozenie.length-1]).classList.add("waz");
             punkty++;
             document.getElementById('wynik').innerHTML = 'Wynik: '+ punkty;
@@ -128,8 +130,9 @@ function idz(){
             } else if (kierunek=='d') {
                 polozenie[0] += 10;
             }
-
-            document.getElementById(polozenie[0]).classList.add("waz");
+            document.getElementById(polozenie[1]).classList.add("waz");
+            document.getElementById(polozenie[1]).classList.remove("glowa");
+            document.getElementById(polozenie[0]).classList.add("glowa");
             // setTimeout("idz()",1000);
             timer = setTimeout("idz()",1000/trudnosc);
         }
@@ -150,6 +153,7 @@ function start(){
         for (var i=0; i<polozenie.length; i++){
             document.getElementById(polozenie[i]).classList.add("waz");
         }
+        document.getElementById(polozenie[0]).classList.add("glowa");
         // setTimeout("idz()",1000);
         timer = setTimeout("idz()",1000/trudnosc);
     } else {

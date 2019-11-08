@@ -55,8 +55,12 @@ header div.srodek{
     clear: both;
 }
 .owoc{
-    background-color: #f39c12;
+    /* background-color: #e67e22; */
+    background-color: #e74c3c;
 }
 .waz{
     background-color: #27ae60;
+}
+.glowa{
+    background-color: #f39c12;
 }
