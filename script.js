@@ -24,6 +24,9 @@ function init(){
 
 function dodajOwoc(){
     polozenieOwocu = Math.floor(Math.random()*100)+1;
+    while(polozenie.includes(polozenieOwocu)){
+        polozenieOwocu = Math.floor(Math.random()*100)+1;
+    }
     document.getElementById(polozenieOwocu).classList.add("owoc");
 }
 
