@@ -7,7 +7,19 @@ polozenie[2] = 42;
 var polozenieOwocu = 0;
 var timer = 0;
 var punkty = 0;
-var trudnosc = 1;
+var trudnosc = 2;
+
+function ustawTrudnosc(){
+    var trud;
+    if(trudnosc == 1){
+        trud = 'latwy';
+    } else if (trudnosc = 2) {
+        trud = 'sredni';
+    } else {
+        trud = 'trudny';
+    }
+    document.getElementById('trudnosc').value = trud;
+}
 
 function init(){
     var kod = "";
@@ -20,6 +32,13 @@ function init(){
         kod +='<div class="clear"></div>';
     }
     document.getElementById('plansza').innerHTML = kod;
+
+    ustawTrudnosc();
+
+    for (var i=1; i<polozenie.length; i++){
+        document.getElementById(polozenie[i]).classList.add("waz");
+    }
+    document.getElementById(polozenie[0]).classList.add("glowa");
 }
 
 function dodajOwoc(){
@@ -65,6 +84,7 @@ function koniecGry(){
     document.getElementById('start').innerHTML = 'Start';
     punkty = 0;
     document.getElementById('wynik').innerHTML = 'Wynik: 00';
+    document.getElementById('trudnosc').disabled = false;
 }
 
 function sprawdzPozycje(){
@@ -168,6 +188,7 @@ function start(){
         document.getElementById('start').innerHTML = 'Start';
 
     }
+    document.getElementById('trudnosc').setAttribute("disabled", true);
 }
 
 function zmienKierunek(event) {
@@ -183,5 +204,5 @@ function zmienKierunek(event) {
     } else if (key==37 && kierunek!='p') {
         kierunek = 'l';
     }
-    console.log(kierunek);
+    // console.log(kierunek);
 }
